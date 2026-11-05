@@ -1,0 +1,172 @@
+
+/* Colour theme of the website */
+:root {
+    --primary: #243b55;
+    --accent: #c49a45;
+    --background: #f5f5f2;
+    --text: #333333;
+}
+
+/* Basic page styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+/* Navigation bar */
+nav {
+    background-color: var(--primary);
+    padding: 18px;
+    text-align: center;
+
+    /* Keeps navigation at the top */
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+}
+
+/* Navigation hover effect */
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Banner section */
+.hero {
+    background: linear-gradient(to right, #243b55, #526b80);
+    color: white;
+    text-align: center;
+    padding: 90px 20px 50px;
+}
+
+.hero h1 {
+    font-size: 32px;
+}
+
+/* Buttons */
+button {
+    background-color: var(--accent);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a47c2f;
+}
+
+/* All main sections */
+section {
+    background-color: white;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px #cccccc;
+}
+
+/* Section headings */
+h2 {
+    color: var(--primary);
+}
+
+/* Match schedule and booking tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #cccccc;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Table heading and row styling */
+tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+/* Booking form */
+input, select {
+    width: 95%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+/* Booking form and summary */
+.booking-container {
+    display: flex;
+    gap: 25px;
+}
+
+.booking-form, .summary {
+    flex: 1;
+}
+
+.summary {
+    background-color: #eef2f5;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+/* Guidelines cards */
+.cards {
+    display: flex;
+    gap: 15px;
+}
+
+.card {
+    background-color: #eef2f5;
+    padding: 20px;
+    border-radius: 6px;
+    flex: 1;
+}
+
+.card h3 {
+    color: var(--primary);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Adjustments for mobile screens */
+@media (max-width: 600px) {
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+
+    .booking-container, .cards {
+        flex-direction: column;
+    }
+
+    section {
+        margin: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+}
