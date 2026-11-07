@@ -170,3 +170,8 @@ footer {
         font-size: 12px;
     }
 }
+/* Radio button styling */
+input[type="radio"] {
+    width: auto;
+    margin: 10px;
+}
