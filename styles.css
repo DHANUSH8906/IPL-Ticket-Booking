@@ -175,3 +175,17 @@ input[type="radio"] {
     width: auto;
     margin: 10px;
 }
+/* Toast notification */
+.toast {
+    background-color: #243b55;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    box-shadow: 0 2px 8px #999999;
+    z-index: 2000;
+}
