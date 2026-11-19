@@ -176,4 +176,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    // Activity 8: Filter matches by team
+    let teamFilter = document.getElementById("teamFilter");
+    let matchCards = document.querySelectorAll(".match-card");
+
+    if (teamFilter) {
+        teamFilter.addEventListener("change", function () {
+            let selectedTeam = teamFilter.value;
+
+            matchCards.forEach(function (card) {
+                let teams = card.getAttribute("data-teams");
+
+                if (selectedTeam === "all" || teams.includes(selectedTeam)) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            showToast("Match list filtered!");
+        });
+    }
+
+    // Activity 8: Switch between Grid and List view
+    let matchContainer = document.getElementById("matchContainer");
+    let gridView = document.getElementById("gridView");
+    let listView = document.getElementById("listView");
+
+    if (matchContainer && gridView && listView) {
+        gridView.addEventListener("click", function () {
+            matchContainer.classList.remove("list-view");
+            showToast("Grid view enabled!");
+        });
+
+        listView.addEventListener("click", function () {
+            matchContainer.classList.add("list-view");
+            showToast("List view enabled!");
+        });
+    }
+
+    // Activity 8: Hamburger menu
+    let menuToggle = document.getElementById("menuToggle");
+    let navLinks = document.getElementById("navLinks");
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu after clicking a navigation link
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+        });
+    }
+
 });
