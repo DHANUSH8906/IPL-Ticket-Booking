@@ -24,6 +24,8 @@ function showToast(message) {
 // Wait until the HTML page is loaded
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Activity 5: Book button interaction
+
     // Find all Book buttons
     let bookButtons = document.querySelectorAll(".book-now");
 
@@ -48,10 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    // Activity 5: Booking form submission
+
     // Find the booking form
     let bookingForm = document.getElementById("ticketBookingForm");
 
-    // Show a message when a valid form is submitted
     if (bookingForm) {
 
         bookingForm.addEventListener("submit", function (event) {
@@ -66,7 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Smoothly scroll to the booking form
+    // Activity 5: Smooth scrolling to booking form
+
     let bookingSection = document.getElementById("ticket-form");
 
     if (bookingSection && window.location.hash === "#ticket-form") {
@@ -76,6 +80,99 @@ document.addEventListener("DOMContentLoaded", function () {
                 behavior: "smooth"
             });
         }, 100);
+
+    }
+
+
+    // Activity 7: Live Booking Summary
+
+    // Select the form controls
+    let matchSelect = document.getElementById("match");
+    let standSelect = document.getElementById("stand");
+    let quantityInput = document.getElementById("quantity");
+
+    // Select the Booking Summary Card
+    let summaryCard = document.querySelector(".summary");
+
+    // Run this code only if these elements exist on the page
+    if (matchSelect && standSelect && quantityInput && summaryCard) {
+
+        // Store ticket prices for each match and stand
+        let ticketPrices = {
+            "RCB vs CSK": {
+                "General": 800,
+                "Premium": 1500,
+                "VIP": 3000
+            },
+
+            "MI vs KKR": {
+                "General": 900,
+                "Premium": 1800,
+                "VIP": 3500
+            },
+
+            "CSK vs MI": {
+                "General": 700,
+                "Premium": 1400,
+                "VIP": 2800
+            },
+
+            "KKR vs RCB": {
+                "General": 800,
+                "Premium": 1600,
+                "VIP": 3200
+            }
+        };
+
+
+        // Function to update the Booking Summary
+        function updateSummary(showMessage = true) {
+
+            // Read the selected values
+            let selectedMatch = matchSelect.value;
+            let selectedStand = standSelect.value;
+            let quantity = Number(quantityInput.value) || 1;
+
+            // Get the ticket price
+            let price = ticketPrices[selectedMatch][selectedStand];
+
+            // Calculate the total amount
+            let total = price * quantity;
+
+            // Update the Booking Summary Card
+            summaryCard.querySelector("#summaryMatch").innerText =
+                "Match: " + selectedMatch;
+
+            summaryCard.querySelector("#summaryStand").innerText =
+                "Stand: " + selectedStand;
+
+            summaryCard.querySelector("#summaryPrice").innerText =
+                "Ticket Price: Rs. " + price;
+
+            summaryCard.querySelector("#summaryQuantity").innerText =
+                "Quantity: " + quantity;
+
+            summaryCard.querySelector("#summaryTotal").innerText =
+                "Total Amount: Rs. " + total;
+
+            // Show a toast notification
+            if (showMessage) {
+                showToast("Booking summary updated!");
+            }
+        }
+
+
+        // Update summary when match is changed
+        matchSelect.addEventListener("change", updateSummary);
+
+        // Update summary when stand is changed
+        standSelect.addEventListener("change", updateSummary);
+
+        // Update summary when ticket quantity is changed
+        quantityInput.addEventListener("change", updateSummary);
+
+        // Display the initial summary without a notification
+        updateSummary(false);
 
     }
 
